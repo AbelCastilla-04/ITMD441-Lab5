@@ -1,31 +1,30 @@
 document.getElementById("tip-form").addEventListener("input", () => {
-  const billInput = document.getElementById("bill");
-  const tipRange = document.getElementById("tipRange");
-  const tipPercent = document.getElementById("tipPercent");
+  const bill = parseFloat(document.getElementById("bill").value);
+  const tipSlider = document.getElementById("tipRange");
+  const tipPercentOutput = document.getElementById("tipPercent");
   const tipAmount = document.getElementById("tipAmount");
-  const totalWithTip = document.getElementById("totalWithTip");
   const totalWithTax = document.getElementById("totalWithTax");
+  const totalWithTipTax = document.getElementById("totalWithTipTax");
 
-  let billValue = parseFloat(billInput.value);
-  let tipValue = parseInt(tipRange.value);
-
-  if (isNaN(billValue) || billValue < 0) {
-    tipPercent.value = tipAmount.value = totalWithTip.value = totalWithTax.value = "";
+  if (isNaN(bill) || bill < 0) {
+    tipAmount.value = totalWithTax.value = totalWithTipTax.value = "";
     return;
   }
 
-  tipPercent.value = `${tipValue}%`;
+  const tipPercentage = parseInt(tipSlider.value);
+  tipPercentOutput.textContent = tipPercentage;
 
-  const tip = (tipValue / 100) * billValue;
-  const totalTip = billValue + tip;
-  const totalTax = totalTip * 1.11;
+  const taxAmount = bill * 0.11;
+  const billWithTax = bill + taxAmount;
+  const tip = (tipPercentage / 100) * bill;
+  const finalTotal = billWithTax + tip;
 
+  totalWithTax.value = billWithTax.toFixed(2);
   tipAmount.value = tip.toFixed(2);
-  totalWithTip.value = totalTip.toFixed(2);
-  totalWithTax.value = totalTax.toFixed(2);
+  totalWithTipTax.value = finalTotal.toFixed(2);
 
-  if (billValue === 0) {
-    billInput.value = "";
-    tipPercent.value = tipAmount.value = totalWithTip.value = totalWithTax.value = "";
+  if (bill === 0) {
+    document.getElementById("bill").value = "";
+    tipAmount.value = totalWithTax.value = totalWithTipTax.value = "";
   }
 });
