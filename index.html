@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Tip Calculator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="calculator-container">
+  <div class="calculator-box">
+    <h4>ITMD 441 - Lab5 - Tip Calculator</h4>
     <h1>Tip Calculator</h1>
     <form id="tip-form">
-      <label for="bill">Bill Total ($):</label>
-      <input type="text" id="bill" name="bill" placeholder="Enter bill amount" required />
+      <label for="bill">Bill Total $:</label>
+      <input type="text" id="bill" placeholder="Enter bill amount" />
 
-      <label for="tipRange">Tip Percentage:</label>
-      <input type="range" id="tipRange" name="tipRange" min="0" max="100" />
-      <input type="text" id="tipPercent" disabled />
+      <label for="totalWithTax">Total Bill with Tax (11%):</label>
+      <input type="text" id="totalWithTax" disabled />
 
-      <label for="tipAmount">Tip Amount ($):</label>
+      <label for="tipRange">Tip:</label>
+      <div class="tip-slider">
+        <input type="range" id="tipRange" min="0" max="100" value="0" />
+        <output id="tipPercent">0</output>
+      </div>
+
+      <label for="tipAmount">Tip Amount $:</label>
       <input type="text" id="tipAmount" disabled />
 
-      <label for="totalWithTip">Total with Tip ($):</label>
-      <input type="text" id="totalWithTip" disabled />
-
-      <label for="totalWithTax">Total with Tax (11%) ($):</label>
-      <input type="text" id="totalWithTax" disabled />
+      <label for="totalWithTipTax">Total Bill with Tip and Tax $:</label>
+      <input type="text" id="totalWithTipTax" disabled />
     </form>
   </div>
   <script src="script.js"></script>
