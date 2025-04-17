@@ -82,3 +82,15 @@ input[type="text"]:not([disabled]):hover {
   background-color: #fff8ec;
   border-color: #66b3ff;
 }
+
+.error-msg {
+  color: red;
+  font-size: 13px;
+  margin-top: 2px;
+  display: none;
+}
+
+input.error {
+  border-color: red;
+  background-color: #ffe6e6;
+}
